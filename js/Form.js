@@ -1,0 +1,57 @@
+class Form{
+    constructor(){
+       this.input = createInput("Name");
+       this.button = createButton('Play');
+       this.greeting = createElement('h2');
+       this.title = createElement('h2');
+       this.reset = createButton('Reset');
+    }
+    hide() {
+        this.greeting.hide();
+        this.button.hide();
+        this.input.hide();
+        this.title.hide();
+    }
+    display() {
+        this.title.html("FRUIT CATCHER");
+        this.title.position(670, 580);
+        this.title.style('font-size', '70px');
+        this.title.style('color', 'skyblue');
+        this.input.position(860,450);
+        this.input.style('width', '200px');
+        this.input.style('height', '20px');
+        this.input.style('background', 'lavender');
+        this.button.position(840,530);
+        this.button.style('width', '240px');
+        this.button.style('height', '58px');
+        this.button.style('background', 'lightpink');
+        this.reset.position(500, 140);
+        this.reset.style('width', '100px');
+        this.reset.style('height', '30px');
+        this.reset.style('background', 'lightpink');
+
+        this.button.mousePressed(() => {
+            this.input.hide();
+            this.button.hide();
+            player.name = this.input.value();
+            playerCount += 1;
+            player.index = playerCount;
+            player.update();
+            player.updateCount(playerCount);
+            this.greeting.html("Hello " + player.name)
+            this.greeting.position(600,250);
+            this.greeting.style('color', 'blue');
+            this.greeting.style('font-size', '100px');
+        });
+
+
+        // Make reset button reset the values in the database
+        this.reset.mousePressed(()=>{
+            player.updateCount(0)
+            game.update(0)
+           
+        })
+        
+        
+    }
+}
